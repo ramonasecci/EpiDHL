@@ -28,6 +28,7 @@ namespace EpiDHL.Models
 
         //E-mail
         [Display(Name = "E-mail")]
+        [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Campo obbligatorio")]
         [StringLength(255, MinimumLength = 3, ErrorMessage ="Inserisci almeno 3 caratteri")]
         public string Email { get; set; }

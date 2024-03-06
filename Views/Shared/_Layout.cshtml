@@ -20,8 +20,27 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Informazioni", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contatto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
+                    <li>@Html.ActionLink("Contatto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>    
+                </ul>            
+                    <ul class="navbar-nav text-white">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                @using (Html.BeginForm("Logout", "Login"))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <button class="dropdown-item ">Logout</button>
+                                }
+                            </li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Login", "Index", "Login", new { area = "" }, new { @class = "dropdown-item" })</li>
+
+                        }
+                    </ul>
+                </div>
+
             </div>
         </div>
     </nav>

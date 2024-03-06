@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Lista Spedizioni";
+}
+
+<h2>Lista Spedizioni</h2>
+@if (Model.Count == 0)
+{
+
+
+    <p>Non ci sono spedizioni al momento</p>
+}
+else
+{
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Codice Spedizione</th>
+            <th scope="col">Data Spedizione</th>
+            <th scope="col">Peso</th>
+            <th scope="col">Città Destinazione</th>
+            <th scope="col">Indirizzo</th>
+            <th scope="col">Destinatario</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Data Prevvista</th>
+            <th scope="col">Codice Cliente</th>
+            <th scope="col">Aggiornamenti</th>
+
+
+</thead>
+    <tbody>
+        @foreach (EpiDHL.Models.Spedizione sped in Model)
+        {
+            <tr>
+                <td scope="col">@sped.Spedizione_ID</td>
+                <td scope="col">@sped.Cod_Sped</td>
+                <td scope="col">@sped.Data_Spedizione.ToShortDateString()</td>
+                <td scope="col">@sped.Peso</td>
+                <td scope="col">@sped.Citta_Dest</td>
+                <td scope="col">@sped.Indirizzo</td>
+                <td scope="col">@sped.Destinatario</td>
+                <td scope="col">@sped.Costo.ToString("#,00.##")</td>
+                <td scope="col">@sped.Data_Prev.ToShortDateString()</td>
+                <td scope="col">
+                    @Html.ActionLink(sped.Cliente_ID.ToString(), "Details", "Spedizioni", new { id = sped.Cliente_ID }, new { @class = "nav-link" })
+                </td>
+                <td scope="col">
+                    @Html.ActionLink("Aggiorna Stato", "AddAggiornamento", "Spedizioni", new { id = sped.Spedizione_ID }, new { @class = "nav-link" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+}
+

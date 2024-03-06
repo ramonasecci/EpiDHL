@@ -1,0 +1,34 @@
+﻿@model EpiDHL.Models.ModelComb
+@{
+    ViewBag.Title = "Track";
+}
+
+<h2>Track</h2>
+
+
+<h3>Verifica lo stato della spedizione</h3>
+<div>
+    @using (Html.BeginForm("Track", "Spedizioni", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        if (TempData["ErrorMex"] != null)
+        {
+            <div class="alert alert-danger">
+                I dati di accesso sono errati
+            </div>
+        }
+
+<div class="m-2">
+    @Html.LabelFor(model => model.Spedizione1.Cod_Sped, new { @class = "form-label" })
+    @Html.EditorFor(model => model.Spedizione1.Cod_Sped, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Spedizione1.Cod_Sped, null, new { @class = "invalid-feedback" })
+</div>
+<div class="m-2">
+    @Html.LabelFor(model => model.Cliente1.Cod_Fisc, new { @class = "form-label" })
+    @Html.EditorFor(model => model.Cliente1.Cod_Fisc, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Cliente1.Cod_Fisc, null, new { @class = "invalid-feedback" })
+
+</div>
+        <button class="btn btn-primary">Verifica</button>
+    }
+</div>

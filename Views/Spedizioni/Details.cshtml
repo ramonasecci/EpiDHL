@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="https://www.smartprintciotta.it/wp-content/uploads/2022/04/spedizioni.jpg" class="img-fluid rounded-start" alt="@Model.Cod_Sped">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Cod_Sped</h5>
+                <p class="card-text">@Model.Data_Prev</p>
+                <p class="card-text">@Model.Data_Spedizione</p>
+
+                <p class="card-text"><small class="text-body-secondary">@Model.Costo</small></p>
+            </div>
+        </div>
+    </div>
+</div>
